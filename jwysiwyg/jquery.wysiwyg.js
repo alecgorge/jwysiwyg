@@ -915,7 +915,12 @@
 			  * @author (bugfixes) Alec Gorge, alecgorge@gmail.com 
 			  * @link http://code.google.com/p/jwysiwyg/issues/detail?id=212
 			  */
-			self.options.autogrow_minHeight = $(this.editor).height(); // store default height for autogrow
+			if(typeof(self.options.autogrowMinHeight) == 'undefined') {
+				self.options.autogrowMinHeight = $(this.editor).height(); // store default height for autogrow
+			}
+			else {
+				$(this.editor).height(self.options.autogrowMinHeight);
+			}
 			
 			if (self.options.autogrow) {
 				// events are wrapped in a anon function because this needs to refer to the wysiwyg object
@@ -962,8 +967,8 @@
 		  */
 		updateHeight: function () {
 			var height = $(this.editorDoc).find('body').height() + parseInt($(this.editorDoc).find('body').css('font-size')) + 10;
-			if (height < this.options.autogrow_minHeight) {
-				height = this.options.autogrow_minHeight;
+			if (height < this.options.autogrowMinHeight) {
+				height = this.options.autogrowMinHeight;
 			}
 			this.editor.height(height);
 		},
