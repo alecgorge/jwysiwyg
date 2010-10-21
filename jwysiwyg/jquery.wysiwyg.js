@@ -154,6 +154,29 @@
 	};
 	
 	$.wysiwyg.utils = {
+		extraSafeEntities:[["<",">","'",'"', ' '], [32]],
+		encodeEntities : function (str) {
+			if(this.extraSafeEntities[1].length == 0) {
+				for(var i in this.extraSafeEntities[0]) {
+					this.extraSafeEntities[1].push(this.extraSafeEntities[0][i].charCodeAt());
+				}
+			}
+		
+			var aStr = str.split(''),
+				   i = aStr.length,
+				aRet = [];
+				
+			for(var i in aStr) {
+				var iC = aStr[i].charCodeAt();
+				if ($.inArray(iC, this.extraSafeEntities[1]) && (iC < 65 || iC > 127 || (iC > 90 && iC < 97))) {
+					aRet.push('&#' + iC + ';');
+				} else {
+					aRet.push(aStr[i]);
+				}
+			}
+			
+			return aRet.join('');
+		}			
 	};
 
 	$.fn.wysiwyg.controls = {
