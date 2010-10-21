@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" >
+<head>
+  <title>Issue 214 (google code) Testcase - jWYSIWYG</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="../jwysiwyg/jquery.wysiwyg.css" type="text/css" />
+</head>
+
+<body>
+  <h1>jWYSIWYG</h1>
+  <h2><a href="http://code.google.com/p/jwysiwyg/issues/detail?id=212">Issue 212 (google code)</a>: Testcase</h2>
+  <div>
+    <textarea name="wysiwyg" class="wysiwyg" id="wysiwyg" rows="5" cols="47">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam mauris nunc, condimentum volutpat pellentesque et, rhoncus nec odio. Curabitur eleifend turpis sit amet diam tincidunt imperdiet. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras ultrices, sapien consequat tincidunt rhoncus, enim magna dapibus nulla, id commodo est dui in urna. Vivamus volutpat sagittis odio, et fermentum orci malesuada eget. Cras nec aliquet sapien. Curabitur id ligula nisl. Proin malesuada metus quis dui tristique tristique. Fusce tempus condimentum erat quis ultrices. Aliquam erat volutpat. Curabitur nisl tellus, luctus ac vulputate vel, volutpat sed neque. Phasellus tempus congue dolor, at eleifend lorem pharetra vestibulum. Proin eget ligula neque. Suspendisse scelerisque luctus euismod. Morbi sagittis posuere nisl, a rhoncus elit gravida bibendum. Aenean quis libero et nulla rutrum facilisis ac et erat. Vestibulum tortor dui, egestas a vehicula quis, elementum in enim.</textarea>
+  </div>
+  <script type="text/javascript" src="../lib/jquery-1.4.2.js"></script>
+  <script type="text/javascript" src="../jwysiwyg/jquery.wysiwyg.js"></script>
+  <script type="text/javascript">
+	$(function () {
+		$('.wysiwyg').wysiwyg({
+			autogrow: true,
+			controls: {
+				html: {
+					visible: true
+				}
+			}
+		});
+	});
+  </script>
+</body>
+</html>

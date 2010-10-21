@@ -909,6 +909,21 @@
 					}
 				}, 0);
 			}
+			
+			/**
+			  * @author Gleb Mikheev, glebmachine@gmail.com
+			  * @author (bugfixes) Alec Gorge, alecgorge@gmail.com 
+			  * @link http://code.google.com/p/jwysiwyg/issues/detail?id=212
+			  */
+			self.options.autogrow_minHeight = $(this.editor).height(); // store default height for autogrow
+			
+			if (self.options.autogrow) {
+				// events are wrapped in a anon function because this needs to refer to the wysiwyg object
+				// not the element
+				$(this.editorDoc).keyup(function () { self.updateHeight(); })
+								 .bind("frameInitalized", function () {self.updateHeight(); });
+			}
+			// end autogrow
 
 			if (this.initialContent.length === 0) {
 				this.setContent('<p>initial content</p>');
@@ -935,6 +950,22 @@
 					$(self.editorDoc).bind("cut", handler);
 				}
 			}
+			
+			$(self.editorDoc).trigger("frameInitalized");
+		},
+		
+		/**
+		  * Auto-growing editor ability
+		  * October 7, 2010. by Gleb Mikheev, glebmachine@gmail.com
+		  * Bugfixed and merged by Alec Gorge ( http://github.com/alecgorge ) on October 21, 2010
+		  * @link http://code.google.com/p/jwysiwyg/issues/detail?id=212
+		  */
+		updateHeight: function () {
+			var height = $(this.editorDoc).find('body').height() + parseInt($(this.editorDoc).find('body').css('font-size')) + 10;
+			if (height < this.options.autogrow_minHeight) {
+				height = this.options.autogrow_minHeight;
+			}
+			this.editor.height(height);
 		},
 
 		focusEditor: function () {
